@@ -2,6 +2,47 @@
  * This is a simple mathematics library in JavaScript
  * in conjunction with studies at University of Phoenix.
  * 
+ * List of mathematical constants:
+ * > Pi
+ * > Epsilon
+ * > Euler's Number
+ * 
+ * List of functions:
+ * > Addition
+ * > Subtraction
+ * > Division
+ * > Multiplication
+ * > Euclidean Division
+ * > Factorials
+ * > Exponents
+ * > Absolute Value
+ * > Square Root
+ * > Summation
+ * > Permutations
+ * > Combinations
+ * > Probability
+ * > Logarithms
+ * > Negation
+ * > Random Number Generation
+ * > Area of Quadrilaterals, Circles, Triangles
+ * > Perimeter
+ * > Circumference
+ * > Volume of Boxes, Cylinders, Spheres, Cones, Pyramids
+ * > Quadratic Equation
+ * > Distance
+ * > Midpoint
+ * > Slope
+ * > Pythagorean Theorem
+ * > Sin
+ * > Cosine
+ * > Tangent
+ * > Secant
+ * > Cosecant
+ * > Cotangent
+ * > Compound Interest
+ * > Compound Interest using Euler's Number
+ * > Pay Calculation (w/ Overtime)
+ * 
  * COPYRIGHT D. PAUL BARDEN 2018
  * 
  * @file minimath.js
@@ -10,7 +51,7 @@
 
 var PI = 3.14159265359;
 var EPS = 1e-15;
-var EUL = 2.71828182845;
+var E = 2.71828182845;
 
 function add(a, b) {
     return a + b;
@@ -69,7 +110,7 @@ function abs(a) {
 function sqrt(a) {
     var b = a;
     while (abs(b - a / b) > EPS * b) {
-        b = (a / b + b) / 2.0;
+        b = (a / b + b) / 2;
     }
     return b;
 }
@@ -144,9 +185,10 @@ function random(a, b) {
 
     var seed = (mils * secs) * .00000001;
 
-    while(seed < a || seed > b) {
+    while(seed < a || seed >= b + 1) {
         seed = 0|(seed + ((1e-15 * (fact(mils % day) * pow(secs, month) + day / mins - secs % mils) + (sqrt(year) + mils * 76.020481) + hours) % b));
         if(seed == 0) seed = a;
+        if(seed >= b && seed <= b + 2) seed = b;
         console.log(seed);
     }
     
@@ -231,8 +273,27 @@ function tan(a, c) {
     return a / c;
 }
 
-function trigId(a, b, c) {
-    var i = pow(sin(a, b), 2) +pow(cos(c, b), 2);
-    if(i == 1) return true;
-    else return false;
+function sec(c, b) {
+    return 1 / cos(c, b);
+}
+
+function csc(a, b) {
+    return 1 / sin(a, b);
+}
+
+function cot(a, c) {
+    return 1 / tan(a, c);
+}
+
+function compInt(a, b, c, d) {
+    return a * pow(1 + (b / c), c * d);
+}
+
+function compIntD(a, c, d) {
+    return a * pow(E, c * d)
+}
+
+function pay(a, b) {
+    if(b > 40) return a * 40 + (a * 1.5 * (b - 40));
+    else return a * b;
 }
