@@ -453,8 +453,8 @@ function pythag(a, b) {
 /**
  * Sine, ratio of side opposite given angle
  * 
- * @param {*} a Opposite
- * @param {*} b Hypotenuse
+ * @param {number} a Opposite
+ * @param {number} b Hypotenuse
  */
 function sin(a, b) {
     return a / b;
