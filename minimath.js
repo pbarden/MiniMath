@@ -2,6 +2,8 @@
  * This is a simple mathematics library in JavaScript
  * in conjunction with studies at University of Phoenix.
  * 
+ * COPYRIGHT D. PAUL BARDEN 2018
+ * 
  * List of mathematical constants:
  * > Pi
  * > Epsilon
@@ -41,9 +43,7 @@
  * > Cotangent
  * > Compound Interest
  * > Compound Interest using Euler's Number
- * > Pay Calculation (w/ Overtime)
- * 
- * COPYRIGHT D. PAUL BARDEN 2018
+ * > Paycheck (w/ Overtime)
  * 
  * @file minimath.js
  * @author D. Paul Barden
@@ -53,14 +53,32 @@ var PI = 3.14159265359;
 var EPS = 1e-15;
 var E = 2.71828182845;
 
+/**
+ * Addition, adds two numbers together
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 function add(a, b) {
     return a + b;
 }
 
+/**
+ * Subtraction, subtracts b from a
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 function sub(a, b) {
     return a - b;
 }
 
+/**
+ * Division, divides a by b
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 function div(a, b) {
     // Prevents division by zero
     if(b == 0) {
@@ -70,14 +88,32 @@ function div(a, b) {
     }
 }
 
+/**
+ * Multiplication, multiplies a by b
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 function mult(a, b) {
     return a * b;
 }
 
+/**
+ * Euclidean Division, returns the remainder after a is 
+ * divided evenly by b
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 function mod(a, b) {
     return a % b;
 }
 
+/**
+ * Factorial, multiplies a by all smaller whole numbers
+ * 
+ * @param {number} a 
+ */
 function fact(a) {
     // Prevents negative factorialization
     if (a < 0) {
@@ -93,6 +129,12 @@ function fact(a) {
     return a;
 }
 
+/**
+ * Exponent, raises a to the power of b
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 function pow(a, b) {
     var ans = 1;
     for (i = 1; i <= b; i++) {
@@ -101,12 +143,22 @@ function pow(a, b) {
     return ans;
 }
 
+/**
+ * Absolute Value, returns integer magnitude without sign
+ * 
+ * @param {number} a 
+ */
 function abs(a) {
     if (a < 0) {
         return -a;
     } else return a;
 }
 
+/**
+ * Square Root, returns the square root of a
+ * 
+ * @param {number} a 
+ */
 function sqrt(a) {
     var b = a;
     while (abs(b - a / b) > EPS * b) {
@@ -115,6 +167,12 @@ function sqrt(a) {
     return b;
 }
 
+/**
+ * Summation, returns the sum of an equation with limits a and b
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 function sum(a, b) {
     var total = 0;
     for (n = a; n <= b; n++) {
@@ -123,23 +181,47 @@ function sum(a, b) {
     return total;
 }
 
-// Example equation for use in sum(), n^2 + 2
+// Example equation for use in sum(), n^2 + 2n
 function equation(num) {
-    return pow(num, 2) + 2;
+    return pow(num, 2) + 2 * num;
 }
 
-function perm(a, b) {
-    return fact(a)/fact(a-b);
-}
-
+/**
+ * Combination, subsets of b taken from set a
+ * 
+ * @param {number} a Total objects
+ * @param {number} b Objects in subset
+ */
 function comb(a, b) {
     return fact(a)/(fact(b)*fact(a-b));
 }
 
+/**
+ * Permutation, subsets of b taken from set a with unique order
+ * 
+ * @param {number} a Total objects
+ * @param {number} b Objects in subset
+ */
+function perm(a, b) {
+    return fact(a)/fact(a-b);
+}
+
+/**
+ * Probability, probability of a out of b outcomes
+ * 
+ * @param {number} a Favorable outcomes
+ * @param {number} b Total possible outcomes
+ */
 function prob(a, b) {
     return a / b;
 }
 
+/**
+ * Logarithm, returns exponent of a where result b
+ * 
+ * @param {number} a Base
+ * @param {number} b Argument
+ */
 function log(a, b) {
     var comp = 0;
     var ans = 0;
@@ -157,6 +239,11 @@ function log(a, b) {
     }
 }
 
+/**
+ * Negate, returns the negative of number
+ * 
+ * @param {number} a 
+ */
 function negate(a) {
     if(a == 0) {
         return "Undefined";
@@ -167,6 +254,13 @@ function negate(a) {
     }
 }
 
+/**
+ * Random, generates a random whole number based on time
+ * note: not recommended for small range or numbers over 100k
+ * 
+ * @param {number} a Lower limit
+ * @param {number} b Upper limit
+ */
 function random(a, b) {
     var current = new Date();
     var year = current.getFullYear();
@@ -197,46 +291,110 @@ function random(a, b) {
     } else return "Undefined";
 }
 
+/**
+ * Area, quadrilateral
+ * 
+ * @param {number} a Length
+ * @param {number} b Width
+ */
 function area(a, b) {
     return a * b;
 }
 
+/**
+ * Area, circle
+ * 
+ * @param {number} a Radius
+ */
 function areaCircle(a) {
     return PI * pow(a, 2);
 }
 
+/**
+ * Area, triangle
+ * 
+ * @param {*} a Base
+ * @param {*} b Height
+ */
 function areaTri(a, b) {
-    return 1 / 2 * (a * b);
+    return a * b / 2;
 }
 
+/**
+ * Perimeter, quadrilateral
+ * 
+ * @param {number} a Length
+ * @param {number} b Width
+ */
 function perim(a, b) {
-    return 2 * a + 2 * b;
+    return 2 * (a + b);
 }
 
+/**
+ * Circumference, circle
+ * 
+ * @param {number} a Radius
+ */
 function circum(a) {
     return 2 * PI * a;
 }
 
+/**
+ * Volume, rectangular
+ * @param {number} a Height
+ * @param {number} b Length
+ * @param {number} c Width
+ */
 function vol(a, b, c) {
     return a * b * c;
 }
 
+/**
+ * Volume, cylinder
+ * 
+ * @param {number} a Radius
+ * @param {number} b Height
+ */
 function volCyl(a, b) {
     return areaCircle(a) * b;
 }
 
+/**
+ * Volume, sphere
+ * 
+ * @param {number} a Radius
+ */
 function volSph(a) {
     return 4 / 3 * PI * pow(a, 3);
 }
 
+/**
+ * Volume, cone
+ * 
+ * @param {number} a Radius
+ * @param {number} b Height
+ */
 function volCone(a, b) {
     return 1 / 3 * volCyl(a, b);
 }
 
-function volPyr(a, b, c) {
-    return 1 / 3 * vol(a, b, c);
+/**
+ * Volume, pyramid
+ * 
+ * @param {number} a Base
+ * @param {number} b Height
+ */
+function volPyr(a, b) {
+    return (a * b) / 3;
 }
 
+/**
+ * Quadratic Equation, determines unknown value(s) of x in ax^2+bx+c
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ * @param {number} c 
+ */
 function quad(a, b, c) {
     var disc = (b * b) - 4 * (a * c);
     var root =  sqrt(disc);
@@ -245,54 +403,143 @@ function quad(a, b, c) {
     return "x = " + x1 + ", " + x2;
 }
 
+/**
+ * Distance, returns distance between two points (x1, y1) and (x2, y2)
+ * 
+ * @param {number} a x1
+ * @param {number} b y1
+ * @param {number} c x2
+ * @param {number} d y2
+ */
 function dist(a, b, c, d) {
     return sqrt(pow((a - c), 2))+(pow((b - d), 2));
 }
 
+/**
+ * Midpoint, returns the point between two points (x1, y1) and (x2, y2)
+ * 
+ * @param {number} a x1
+ * @param {number} b y1
+ * @param {number} c x2
+ * @param {number} d y2
+ */
 function midPpoint(a, b, c, d) {
     return (a + c)/2 + ", " + (b + d)/2;
 }
 
+/**
+ * Slope, returns slope of straight line with two points (x1, y1) and (x2, y2)
+ * 
+ * @param {number} a x1
+ * @param {number} b y1
+ * @param {number} c x2
+ * @param {number} d y2
+ */
 function slope(a, b, c, d) {
-    return (d - b) / (c - a);
+    return (d - b) + "/" + (c - a);
 }
 
+/**
+ * Pythagorean Theorem, returns length of unknown side c of right triangle
+ * with side a and b
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 function pythag(a, b) {
     return sqrt(pow(a, 2) + pow(b, 2));
 }
 
+/**
+ * Sine, ratio of side opposite given angle
+ * 
+ * @param {*} a Opposite
+ * @param {*} b Hypotenuse
+ */
 function sin(a, b) {
     return a / b;
 }
 
+/**
+ * Cosine, ratio of side adjacent to hypotenuse
+ * 
+ * @param {number} c Adjacent
+ * @param {number} b Hypotenuse
+ */
 function cos(c, b) {
     return c / b;
 }
 
+/**
+ * Tangent, ratio of the side length opposite and adjacent
+ * 
+ * @param {number} a Opposite
+ * @param {number} c Adjacent
+ */
 function tan(a, c) {
     return a / c;
 }
 
+
+/**
+ * Secant, reciprocal function of Cosine
+ * 
+ * @param {number} c Adjacent
+ * @param {number} b Hypotenuse
+ */
 function sec(c, b) {
     return 1 / cos(c, b);
 }
 
+/**
+ * Cosecant, reciprocal function of Sine
+ * 
+ * @param {number} a Opposite
+ * @param {number} b Hypotenuse
+ */
 function csc(a, b) {
     return 1 / sin(a, b);
 }
 
+/**
+ * Cotangent, reciprocal function of Tangent
+ * 
+ * @param {number} a Opposite
+ * @param {number} c Adjacent
+ */
 function cot(a, c) {
     return 1 / tan(a, c);
 }
 
+/**
+ * Compound Interest, principal + interest
+ * 
+ * @param {number} a Principal
+ * @param {number} b Interest rate
+ * @param {number} c Times compounded yearly
+ * @param {number} d Time in years
+ */
 function compInt(a, b, c, d) {
     return a * pow(1 + (b / c), c * d);
 }
 
-function compIntD(a, c, d) {
-    return a * pow(E, c * d)
+/**
+ * Compound Interest, using Euler's number
+ * 
+ * @param {number} a Principal
+ * @param {number} b Interest rate
+ * @param {number} d Time in years
+ */
+function compIntE(a, b, d) {
+    return a * pow(E, b * d)
 }
 
+/**
+ * Paycheck, standard overtime over 40 hours
+ * 
+ * @param {number} a Pay rate
+ * @param {number} b Hours worked
+ */
 function pay(a, b) {
     if(b > 40) return a * 40 + (a * 1.5 * (b - 40));
     else return a * b;
