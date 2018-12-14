@@ -256,7 +256,6 @@ function negate(a) {
 
 /**
  * Random, generates a random whole number based on time
- * note: not recommended for small range or numbers over 100k
  * 
  * @param {number} a Lower limit
  * @param {number} b Upper limit
